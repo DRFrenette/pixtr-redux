@@ -17,4 +17,12 @@ class GalleriesController < ApplicationController
 
     redirect_to "/"
   end
+
+  def show
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def edit
+    @gallery = Gallery.find(params[:id])
+  end
 end
