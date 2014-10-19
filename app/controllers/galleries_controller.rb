@@ -16,7 +16,17 @@ class GalleriesController < ApplicationController
       description: params[:gallery][:description]
     )
 
-    redirect_to "/"
+    redirect_to root_path 
+  end
+
+  def update
+    gallery = Gallery.find(params[:id])
+    gallery.update(
+      name: params[:gallery][:name],
+      description: params[:gallery][:name]
+    )
+
+    redirect_to root_path
   end
 
   def show
