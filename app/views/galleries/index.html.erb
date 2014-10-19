@@ -1,3 +1,14 @@
 <h1>Pixtr</h1>
 
-<%= link_to "Create a New Gallery", galleries_new_path %>
+<%= link_to "Create a New Gallery", new_gallery_path %>
+
+<ul>
+  <% @galleries.each do |gallery| %>
+  <li>
+  <% link_to gallery.name, gallery %>
+   -
+   <% gallery.description %>
+   <% button_to "Edit", edit_gallery_path(gallery) %>
+   </li>
+<% end %>
+</ul>
