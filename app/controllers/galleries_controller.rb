@@ -20,7 +20,7 @@ class GalleriesController < ApplicationController
   end
 
   def update
-    gallery = Gallery.find(params[:id])
+    gallery = load_gallery_from_url
     gallery.update(
       name: params[:gallery][:name],
       description: params[:gallery][:name]
@@ -30,10 +30,21 @@ class GalleriesController < ApplicationController
   end
 
   def show
-    @gallery = Gallery.find(params[:id])
+    @gallery = load_gallery_from_url
   end
 
   def edit
-    @gallery = Gallery.find(params[:id])
+    @gallery = load_gallery_from_url
+  end
+
+  def destroy
+    gallery = load_gallery_from_url
+    gallery.destroy
+
+    redirect_to root_path
+  end
+
+  def load_gallery_from_url
+    Gallery.find(params[:id])
   end
 end
