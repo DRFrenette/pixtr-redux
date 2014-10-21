@@ -11,20 +11,14 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    Gallery.create(
-      name: params[:gallery][:name],
-      description: params[:gallery][:description]
-    )
+    gallery.create(gallery_params)
 
     redirect_to root_path 
   end
 
   def update
     gallery = load_gallery_from_url
-    gallery.update(
-      name: params[:gallery][:name],
-      description: params[:gallery][:name]
-    )
+    gallery.update(gallery_params)
 
     redirect_to root_path
   end
@@ -46,5 +40,11 @@ class GalleriesController < ApplicationController
 
   def load_gallery_from_url
     Gallery.find(params[:id])
+  end
+
+  private
+
+  def gallery_params
+    params.require(:gallery).permit(:name, :description)
   end
 end
