@@ -9,15 +9,9 @@
    -
    <%= gallery.description %>
    <%= button_to "Edit", edit_gallery_path(gallery) %>
-   <%# <%= button_to "Delete", @gallery, method: :delete %>
-
-   <form action="/galleries/<%= gallery.id %>" method="POST">
-     <input type="hidden" name="_method" value="DELETE" />
-     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" /> 
-     <div>
-       <input type="submit" value="Delete gallery" />
-     </div>
-   </form>
+   <%= form_for gallery, method: :delete do |form| %>
+     <%= form.submit "Delete Gallery" %>
+   <% end %>
    </li>
-<% end %>
+ <% end %>
 </ul>

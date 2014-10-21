@@ -11,7 +11,7 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    gallery.create(gallery_params)
+    @gallery.create(gallery_params)
 
     redirect_to root_path 
   end
